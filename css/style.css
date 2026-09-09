@@ -28,7 +28,7 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  animation: aparecer 1.8s ease forwards;
+  animation: aparecer 8s ease forwards;
 }
 
 /* ESTRELA */
