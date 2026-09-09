@@ -1,129 +1,640 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+
+/* =========================================================
+   ANA NOCTIS — COUNTDOWN
+   ========================================================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html,
 body {
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+}
 
-  background: #071326;
+body {
+  background: #050e2b;
   color: #f7eedb;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Kalam", cursive;
+  font-weight: 300;
+  font-style: normal;
 
   overflow: hidden;
 }
 
-/* CONTEÚDO */
+/* =========================================================
+   APLICAÇÃO
+   ========================================================= */
 
-.container {
-  text-align: center;
+.app {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  margin-top: -25px;
+}
+
+/* =========================================================
+   TELAS
+   ========================================================= */
+
+.tela {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+
   opacity: 0;
-  animation: aparecer 8s ease forwards;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
 }
 
-/* ESTRELA */
-
-.estrela {
-  font-size: 18px;
-  color: #dbaf50;
-  margin-bottom: 28px;
-  animation: brilho 3s ease-in-out infinite;
+#tela-01 {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
-/* TÍTULO */
+/* =========================================================
+   VISUAL
+   ========================================================= */
 
-.titulo {
-  font-size: 22px;
-  letter-spacing: 5px;
-  font-weight: normal;
-  margin-bottom: 18px;
-}
+.visual {
+  position: absolute;
 
-/* MENSAGEM */
+  inset: 0;
 
-.mensagem {
-  font-size: 15px;
-  letter-spacing: 2px;
-  opacity: 0.8;
-  font-style: italic;
-}
+  width: 100%;
+  height: 100%;
 
-/* PONTINHOS */
-
-.loading {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 7px;
-  margin-top: 40px;
+  justify-content: center;
+
+  z-index: 0;
 }
 
-.loading span {
-  width: 5px;
-  height: 5px;
+.visual svg {
+  display: block;
 
-  background: #f7eedb;
-
-  border-radius: 50%;
-
-  animation: pontinho 1.4s ease-in-out infinite;
+  width: 100vw;
+  height: 100vh;
 }
 
-.loading span:nth-child(2) {
-  animation-delay: 0.2s;
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+.conteudo {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 10;
 }
 
-.loading span:nth-child(3) {
-  animation-delay: 0.4s;
+/* =========================================================
+   1. ESTRELAS DO CÉU
+   ========================================================= */
+
+#ceu #estrelas > * {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-/* ANIMAÇÕES */
+.fase-ceu #ceu #estrelas > * {
+  animation:
+    aparecer-estrela 1.2s ease-out forwards,
+    pulsar-estrela var(--duracao-estrela) ease-in-out var(--atraso-estrela)
+      infinite;
+}
 
-@keyframes pontinho {
-  0%,
-  60%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.3;
+@keyframes aparecer-estrela {
+  from {
+    opacity: 0;
   }
 
-  30% {
-    transform: translateY(-6px);
+  to {
     opacity: 1;
   }
 }
 
-@keyframes brilho {
+@keyframes pulsar-estrela {
   0%,
   100% {
-    opacity: 0.45;
+    transform: scale(0.85);
+
+    filter: drop-shadow(0 0 2px rgb(189, 253, 199))
+      drop-shadow(0 0 4px rgba(199, 141, 15, 0.773));
+  }
+
+  50% {
+    transform: scale(1.15);
+
+    filter: drop-shadow(0 0 3px rgba(247, 238, 219, 0.945))
+      drop-shadow(0 0 7px rgba(232, 161, 9, 0.799));
+  }
+}
+
+/* =========================================================
+   2. PONTINHOS DOURADOS
+   ========================================================= */
+
+#pontinhos circle {
+  opacity: 0;
+
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.fase-pontinhos #pontinhos circle {
+  animation:
+    aparecer-pontinho 1s ease-out var(--atraso-pontinho, 0s) forwards,
+    brilho-pontinho var(--duracao-pontinho, 4s) ease-in-out
+      calc(var(--atraso-pontinho, 0s) + 1s) infinite;
+}
+
+@keyframes aparecer-pontinho {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  100% {
+    opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes brilho-pontinho {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.85);
   }
 
   50% {
     opacity: 1;
     transform: scale(1.15);
   }
+
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
 }
 
-@keyframes aparecer {
+/* =========================================================
+   3. ÓRBITA
+   ========================================================= */
+
+#orbita path {
+  opacity: 1;
+  fill: none;
+
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.fase-orbita #orbita path {
+  animation: desenhar-orbita 3.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes desenhar-orbita {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* =========================================================
+   4. ELEMENTOS DA ÓRBITA
+   ========================================================= */
+
+/*
+   As quatro estrelas da órbita ficam escondidas
+   durante o desenho da linha.
+*/
+
+#circulo #estrela-esquerda,
+#circulo #estrela-superior,
+#circulo #estrela-inferior,
+#circulo #estrela-direita {
+  opacity: 0;
+}
+
+.fase-elementos-orbita #circulo #estrela-esquerda,
+.fase-elementos-orbita #circulo #estrela-superior,
+.fase-elementos-orbita #circulo #estrela-inferior,
+.fase-elementos-orbita #circulo #estrela-direita {
+  animation: aparecer-elemento-orbita 0.8s ease-out forwards;
+}
+
+@keyframes aparecer-elemento-orbita {
   from {
     opacity: 0;
-    transform: translateY(8px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   5. ESTRELA-CONTADOR
+   ========================================================= */
+
+#estrela-contador {
+  opacity: 0;
+
+  filter: drop-shadow(0 0 2px rgba(246, 186, 72, 0.35))
+    drop-shadow(0 0 5px rgba(246, 186, 72, 0.16));
+}
+
+.fase-conteudo #estrela-contador {
+  animation:
+    aparecer-estrela-contador 1s ease-out forwards,
+    brilho-estrela-contador 2.8s ease-in-out 1s infinite;
+}
+
+@keyframes aparecer-estrela-contador {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes brilho-estrela-contador {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(246, 186, 72, 0.3))
+      drop-shadow(0 0 4px rgba(246, 186, 72, 0.12));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 4px rgba(246, 186, 72, 0.65))
+      drop-shadow(0 0 8px rgba(246, 186, 72, 0.25));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 2px rgba(246, 186, 72, 0.3))
+      drop-shadow(0 0 4px rgba(246, 186, 72, 0.12));
+  }
+}
+
+/* =========================================================
+   6. TÍTULO — ANA NOCTIS
+   ========================================================= */
+
+.titulo {
+  position: absolute;
+
+  left: 47.5%;
+  top: 14.5%;
+
+  transform: translateX(-30%) rotate(-5deg);
+
+  color: #f7eedb;
+
+  font-size: 24px;
+
+  font-weight: normal;
+
+  letter-spacing: 5px;
+
+  white-space: nowrap;
+
+  opacity: 0;
+}
+
+.fase-titulo .titulo {
+  animation: escrever-titulo 1.5s ease-out forwards;
+}
+
+@keyframes escrever-titulo {
+  0% {
+    opacity: 0;
+
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    opacity: 1;
+
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* =========================================================
+   7. FRASE DO MÊS
+   ========================================================= */
+
+#frase-mes {
+  position: absolute;
+
+  left: 85%;
+  bottom: 39%;
+
+  transform: translateX(-50%);
+
+  width: 80%;
+
+  font-size: 14px;
+
+  opacity: 0;
+}
+
+.fase-conteudo #frase-mes {
+  animation: aparecer-conteudo 1s ease-out forwards;
+}
+
+/* =========================================================
+   8. DIAS
+   ========================================================= */
+
+/* =========================================================
+   BRILHO DOURADO ATRÁS DA CONTAGEM DE DIAS
+   ========================================================= */
+
+.contador-dias {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-5deg);
+  opacity: 0;
+}
+
+.contador-dias #dias {
+  position: relative;
+  z-index: 1;
+}
+
+.contador-dias::before {
+  content: "";
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  left: 47%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(178, 126, 14, 0.327) 0%,
+    rgba(219, 175, 80, 0.23) 55%,
+    rgba(219, 175, 80, 0.03) 100%,
+    transparent 75%
+  );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  animation: brilho-dias 4s ease-in-out infinite;
+}
+
+@keyframes brilho-dias {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+.fase-conteudo .contador-dias {
+  animation: aparecer-conteudo 1s ease-out 0.15s forwards;
+}
+
+.contador-dias #dias {
+  font-size: 100px;
+}
+
+.dias-sub {
+  font-size: 26px;
+
+  margin-top: -50px;
+}
+
+/* =========================================================
+   9. HORAS / MINUTOS / SEGUNDOS
+   ========================================================= */
+
+.contador-hms {
+  position: absolute;
+
+  left: 50.2%;
+  top: 69.5%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #f7eedb;
+
+  font-size: 18px;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+
+  gap: 10px;
+
+  opacity: 0;
+}
+
+.fase-conteudo .contador-hms {
+  animation: aparecer-conteudo 1s ease-out 0.3s forwards;
+}
+
+.contador span {
+  display: inline-block;
+}
+
+.contador .separador {
+  margin-top: -20px;
+}
+
+.time {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.time-titulo {
+  font-size: 28px;
+}
+
+.time-sub {
+  font-size: 12px;
+}
+
+/* =========================================================
+   10. FRASE FINAL
+   ========================================================= */
+
+.frase {
+  position: absolute;
+
+  left: 50%;
+  bottom: 13%;
+
+  transform: translateX(-50%);
+
+  width: 80%;
+
+  text-align: center;
+
+  color: #f7eedb;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  letter-spacing: 1.5px;
+
+  font-style: italic;
+
+  opacity: 0;
+}
+
+.fase-conteudo .frase {
+  animation: aparecer-frase 1.2s ease-out 0.5s forwards;
+}
+
+@keyframes aparecer-frase {
+  from {
+    opacity: 0;
+
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  to {
+    opacity: 0.85;
+
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* =========================================================
+   11. ANIMAÇÃO DE CONTEÚDO
+   ========================================================= */
+
+@keyframes aparecer-conteudo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   12. OUTROS ELEMENTOS QUE APARECEM COM O CONTADOR
+   ========================================================= */
+
+#estrela-superior_2,
+#linha-estrela-branca,
+#linha-estrela-dourada,
+#linha-estrela-inferior {
+  opacity: 0;
+}
+
+.fase-conteudo #estrela-superior_2,
+.fase-conteudo #linha-estrela-branca,
+.fase-conteudo #linha-estrela-dourada,
+.fase-conteudo #linha-estrela-inferior {
+  animation: aparecer-conteudo 1s ease-out forwards;
+}
+
+/* =========================================================
+   13. REDUÇÃO DE MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .titulo {
+    left: 42%;
+    top: 16%;
+  }
+
+  #frase-mes {
+    left: 73%;
+    top: 57%;
+  }
+
+  .contador-dias {
+    left: 35%;
+    top: 30%;
+  }
+
+  .contador-hms {
+    left: 50%;
+    top: 67.5%;
+  }
+
+  .frase {
+    bottom: 16%;
   }
 }
