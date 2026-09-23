@@ -1,7 +1,27 @@
 /* =========================================================
    ANA NOCTIS — COUNTDOWN
    ========================================================= */
+const parametros = new URLSearchParams(window.location.search);
+const origem = parametros.get("origem");
 
+console.log("Origem:", origem);
+
+if (origem === "segredo") {
+
+  emailjs
+    .send("service_yd4mgxk", "template_4gzu3ls", {
+      message: `
+        A Ana abriu o contador.
+      `,
+      footer: "O contador foi encontrado.",
+    })
+    .then(() => {
+      console.log("✅ Notificação enviada pelo EmailJS.");
+    })
+    .catch((error) => {
+      console.error("❌ Erro ao enviar pelo EmailJS:", error);
+    });
+}
 /* =========================================================
    1. CONTADOR
    ========================================================= */
