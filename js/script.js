@@ -36,7 +36,7 @@ if (origem === "segredo") {
     à meia-noite: new Date(2026, 10, 13, 0, 0, 0)
   */
 
-const dataFinal = new Date(2026, 10, 11, 23, 10, 30);
+const dataFinal = new Date(2026, 10, 13, 0, 0, 0);
 
 const elementoDias = document.getElementById("dias");
 const elementoHoras = document.querySelector(
