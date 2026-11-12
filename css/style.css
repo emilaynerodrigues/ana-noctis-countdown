@@ -1,40 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
 
 /* =========================================================
-   ANA NOCTIS — COUNTDOWN
-   ========================================================= */
+
+ ANA NOCTIS — COUNTDOWN
+
+ ========================================================= */
 
 * {
   margin: 0;
+
   padding: 0;
+
   box-sizing: border-box;
 }
 
 html,
 body {
   width: 100%;
+
   height: 100%;
 }
 
 body {
   background: #050e2b;
+
   color: #f7eedb;
 
   font-family: "Kalam", cursive;
+
   font-weight: 300;
+
   font-style: normal;
 
   overflow: hidden;
 }
 
 /* =========================================================
-   APLICAÇÃO
-   ========================================================= */
+
+    APLICAÇÃO
+
+    ========================================================= */
 
 .app {
   position: relative;
 
   width: 100vw;
+
   height: 100vh;
 
   overflow: hidden;
@@ -43,8 +54,10 @@ body {
 }
 
 /* =========================================================
-   TELAS
-   ========================================================= */
+
+    TELAS
+
+    ========================================================= */
 
 .tela {
   position: absolute;
@@ -52,13 +65,17 @@ body {
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   opacity: 0;
+
   visibility: hidden;
 
   pointer-events: none;
@@ -70,13 +87,17 @@ body {
 
 #tela-01 {
   opacity: 1;
+
   visibility: visible;
+
   pointer-events: auto;
 }
 
 /* =========================================================
-   VISUAL
-   ========================================================= */
+
+ VISUAL
+
+ ========================================================= */
 
 .visual {
   position: absolute;
@@ -84,10 +105,13 @@ body {
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   z-index: 0;
@@ -97,12 +121,15 @@ body {
   display: block;
 
   width: 100vw;
+
   height: 100vh;
 }
 
 /* =========================================================
-   CONTEÚDO
-   ========================================================= */
+
+ CONTEÚDO
+
+ ========================================================= */
 
 .conteudo {
   position: absolute;
@@ -110,6 +137,7 @@ body {
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   pointer-events: none;
@@ -118,12 +146,16 @@ body {
 }
 
 /* =========================================================
-   1. ESTRELAS DO CÉU
-   ========================================================= */
+
+ 1. ESTRELAS DO CÉU
+
+ ========================================================= */
 
 #ceu #estrelas > * {
   opacity: 0;
+
   transform-box: fill-box;
+
   transform-origin: center;
 }
 
@@ -162,13 +194,16 @@ body {
 }
 
 /* =========================================================
-   2. PONTINHOS DOURADOS
-   ========================================================= */
+
+ 2. PONTINHOS DOURADOS
+
+ ========================================================= */
 
 #pontinhos circle {
   opacity: 0;
 
   transform-box: fill-box;
+
   transform-origin: center;
 }
 
@@ -182,16 +217,19 @@ body {
 @keyframes aparecer-pontinho {
   0% {
     opacity: 0;
+
     transform: scale(0.2);
   }
 
   70% {
     opacity: 1;
+
     transform: scale(1.15);
   }
 
   100% {
     opacity: 1;
+
     transform: scale(1);
   }
 }
@@ -199,29 +237,36 @@ body {
 @keyframes brilho-pontinho {
   0% {
     opacity: 0.4;
+
     transform: scale(0.85);
   }
 
   50% {
     opacity: 1;
+
     transform: scale(1.15);
   }
 
   100% {
     opacity: 0.4;
+
     transform: scale(0.85);
   }
 }
 
 /* =========================================================
-   3. ÓRBITA
-   ========================================================= */
+
+ 3. ÓRBITA
+
+ ========================================================= */
 
 #orbita path {
   opacity: 1;
+
   fill: none;
 
   stroke-dasharray: 1;
+
   stroke-dashoffset: 1;
 }
 
@@ -240,12 +285,17 @@ body {
 }
 
 /* =========================================================
-   4. ELEMENTOS DA ÓRBITA
-   ========================================================= */
+
+ 4. ELEMENTOS DA ÓRBITA
+
+ ========================================================= */
 
 /*
-   As quatro estrelas da órbita ficam escondidas
-   durante o desenho da linha.
+
+ As quatro estrelas da órbita ficam escondidas
+
+ durante o desenho da linha.
+
 */
 
 #circulo #estrela-esquerda,
@@ -273,8 +323,10 @@ body {
 }
 
 /* =========================================================
-   5. ESTRELA-CONTADOR
-   ========================================================= */
+
+ 5. ESTRELA-CONTADOR
+
+ ========================================================= */
 
 #estrela-contador {
   opacity: 0;
@@ -317,13 +369,16 @@ body {
 }
 
 /* =========================================================
-   6. TÍTULO — ANA NOCTIS
-   ========================================================= */
+
+ 6. TÍTULO — ANA NOCTIS
+
+ ========================================================= */
 
 .titulo {
   position: absolute;
 
   left: 47.5%;
+
   top: 14.5%;
 
   transform: translateX(-30%) rotate(-5deg);
@@ -360,13 +415,16 @@ body {
 }
 
 /* =========================================================
-   7. FRASE DO MÊS
-   ========================================================= */
+
+ 7. FRASE DO MÊS
+
+ ========================================================= */
 
 #frase-mes {
   position: absolute;
 
   left: 85%;
+
   bottom: 39%;
 
   transform: translateX(-50%);
@@ -383,36 +441,50 @@ body {
 }
 
 /* =========================================================
-   8. DIAS
-   ========================================================= */
+
+ 8. DIAS
+
+ ========================================================= */
 
 /* =========================================================
-   BRILHO DOURADO ATRÁS DA CONTAGEM DE DIAS
-   ========================================================= */
+
+ BRILHO DOURADO ATRÁS DA CONTAGEM DE DIAS
+
+ ========================================================= */
 
 .contador-dias {
   position: absolute;
+
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
+
   align-items: center;
+
   transform: rotate(-5deg);
+
   opacity: 0;
 }
 
 .contador-dias #dias {
   position: relative;
+
   z-index: 1;
 }
 
 .contador-dias::before {
   content: "";
+
   position: absolute;
 
   width: 150px;
+
   height: 150px;
 
   left: 47%;
+
   top: 50%;
 
   transform: translate(-50%, -50%);
@@ -420,8 +492,11 @@ body {
   background: radial-gradient(
     circle,
     rgba(178, 126, 14, 0.327) 0%,
+
     rgba(219, 175, 80, 0.23) 55%,
+
     rgba(219, 175, 80, 0.03) 100%,
+
     transparent 75%
   );
 
@@ -438,11 +513,13 @@ body {
   0%,
   100% {
     opacity: 0.55;
+
     transform: translate(-50%, -50%) scale(0.92);
   }
 
   50% {
     opacity: 1;
+
     transform: translate(-50%, -50%) scale(1.08);
   }
 }
@@ -462,13 +539,16 @@ body {
 }
 
 /* =========================================================
-   9. HORAS / MINUTOS / SEGUNDOS
-   ========================================================= */
+
+ 9. HORAS / MINUTOS / SEGUNDOS
+
+ ========================================================= */
 
 .contador-hms {
   position: absolute;
 
   left: 50.2%;
+
   top: 69.5%;
 
   transform: translate(-50%, -50%);
@@ -476,6 +556,7 @@ body {
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   color: #f7eedb;
@@ -509,6 +590,7 @@ body {
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 }
 
@@ -521,13 +603,16 @@ body {
 }
 
 /* =========================================================
-   10. FRASE FINAL
-   ========================================================= */
+
+ 10. FRASE FINAL
+
+ ========================================================= */
 
 .frase {
   position: absolute;
 
   left: 50%;
+
   bottom: 13%;
 
   transform: translateX(-50%);
@@ -568,8 +653,10 @@ body {
 }
 
 /* =========================================================
-   11. ANIMAÇÃO DE CONTEÚDO
-   ========================================================= */
+
+ 11. ANIMAÇÃO DE CONTEÚDO
+
+ ========================================================= */
 
 @keyframes aparecer-conteudo {
   from {
@@ -582,8 +669,10 @@ body {
 }
 
 /* =========================================================
-   12. OUTROS ELEMENTOS QUE APARECEM COM O CONTADOR
-   ========================================================= */
+
+ 12. OUTROS ELEMENTOS QUE APARECEM COM O CONTADOR
+
+ ========================================================= */
 
 #estrela-superior_2,
 #linha-estrela-branca,
@@ -600,15 +689,19 @@ body {
 }
 
 /* =========================================================
-   13. REDUÇÃO DE MOVIMENTO
-   ========================================================= */
+
+ 13. REDUÇÃO DE MOVIMENTO
+
+ ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+
     animation-delay: 0s !important;
+
     animation-iteration-count: 1 !important;
   }
 }
@@ -616,25 +709,735 @@ body {
 @media (max-width: 420px) {
   .titulo {
     left: 42%;
+
     top: 16%;
   }
 
   #frase-mes {
     left: 73%;
+
     top: 57%;
   }
 
   .contador-dias {
-    left: 35%;
+    left: 40%;
+
     top: 30%;
   }
 
   .contador-hms {
     left: 50%;
+
     top: 67.5%;
   }
 
   .frase {
     bottom: 16%;
   }
+}
+
+/* =====================================================
+
+ ANA NOCTIS — TRANSIÇÃO DO DIA DO ANIVERSÁRIO
+
+ ===================================================== */
+
+/* 1. Esconde o conteúdo antigo do contador */
+
+body.dia-chegou .conteudo {
+  opacity: 0 !important;
+
+  visibility: hidden !important;
+
+  transition:
+    opacity 0.8s ease,
+    visibility 0.8s ease;
+}
+
+/* Mantém o céu, mas remove os enfeites da cena anterior */
+
+body.dia-chegou #linha-estrela-branca,
+body.dia-chegou #linha-estrela-dourada,
+body.dia-chegou #linha-estrela-inferior,
+body.dia-chegou #estrela-superior_2,
+body.dia-chegou #estrela-contador {
+  opacity: 0 !important;
+
+  animation: none !important;
+}
+
+/* 2. A órbita original volta a ser desenhada em dourado */
+
+body.dia-chegou #orbita path {
+  opacity: 1;
+
+  stroke: #dbaf50;
+
+  stroke-width: 1;
+
+  fill: none;
+
+  stroke-dasharray: 1;
+
+  stroke-dashoffset: 1;
+
+  animation: desenhar-orbita-dourada 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+@keyframes desenhar-orbita-dourada {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Elas reaparecem depois do desenho */
+
+body.dia-chegou.orbita-pronta #circulo #estrela-esquerda,
+body.dia-chegou.orbita-pronta #circulo #estrela-superior,
+body.dia-chegou.orbita-pronta #circulo #estrela-inferior,
+body.dia-chegou.orbita-pronta #circulo #estrela-direita {
+  animation: aparecer-elemento-orbita 0.8s ease-out forwards !important;
+}
+
+/* =========================================================
+
+ 4. CAMADA DAS ESTRELAS CADENTES (ÓRBITA CURVA CORRIGIDA)
+
+ ========================================================= */
+
+.estrelas-cadentes {
+  position: absolute;
+
+  left: 50%;
+
+  top: 39.2%;
+
+  width: 0;
+
+  height: 0;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  visibility: hidden;
+}
+
+body.dia-chegou.orbita-pronta .estrelas-cadentes {
+  visibility: visible;
+}
+
+/* O anel circular alinhado exatamente no centro da órbita */
+
+.estrela-cadente {
+  --angulo: 0deg;
+
+  --duracao: 3.5s;
+
+  --atraso: 0s;
+
+  --raio: min(100vw, 200px);
+
+  position: absolute;
+
+  left: calc(var(--raio) * -1);
+
+  top: calc(var(--raio) * -0.92);
+
+  width: calc(var(--raio) * 2);
+
+  height: calc(var(--raio) * 2);
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  /* Gradiente cônico que desenha a cauda curva */
+
+  background: conic-gradient(
+    from 300deg,
+
+    transparent 0deg,
+
+    rgba(219, 175, 80, 0) 10deg,
+
+    rgba(219, 175, 80, 0.45) 35deg,
+
+    rgba(255, 229, 160, 0.95) 60deg,
+
+    transparent 60deg
+  );
+
+  /* Máscara: cauda orbital bem fina e delicada */
+
+  -webkit-mask: radial-gradient(
+    circle at center,
+
+    transparent calc(50% - 1.3px),
+    #000 calc(50% - 0.8px),
+    #000 50%,
+
+    transparent calc(50% + 0.5px)
+  );
+
+  mask: radial-gradient(
+    circle at center,
+
+    transparent calc(50% - 1.3px),
+    #000 calc(50% - 0.8px),
+    #000 50%,
+
+    transparent calc(50% + 0.5px)
+  );
+
+  filter: drop-shadow(0 0 4px rgba(246, 186, 72, 0.8));
+}
+
+/* Bolinha luminosa na ponta da cauda */
+
+.estrela-cadente::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 50%;
+
+  width: 6px;
+
+  height: 6px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: #fff4cc;
+
+  box-shadow:
+    0 0 3px 1px #fff4cc,
+    0 0 7px 2px #ffe5a0,
+    0 0 13px 3px rgba(219, 175, 80, 0.9),
+    0 0 20px 4px rgba(219, 175, 80, 0.4);
+}
+
+/* Configurações individuais de cada estrela */
+
+.estrela-1 {
+  --angulo: 15deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 0s;
+
+  --raio: min(100vw, 175px);
+}
+
+.estrela-2 {
+  --angulo: 140deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 0.7s;
+
+  --raio: min(100vw, 215px);
+}
+
+.estrela-3 {
+  --angulo: 265deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 1.5s;
+
+  --raio: min(100vw, 190px);
+}
+
+.estrela-4 {
+  --angulo: 75deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 0.3s;
+
+  --raio: min(100vw, 255px);
+}
+
+.estrela-5 {
+  --angulo: 310deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 1.1s;
+
+  --raio: min(100vw, 230px);
+}
+
+.estrela-6 {
+  --angulo: 195deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 1.9s;
+
+  --raio: min(100vw, 285px);
+}
+
+.estrela-7 {
+  --angulo: 110deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 0.5s;
+}
+
+.estrela-8 {
+  --angulo: 345deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 2.2s;
+
+  --raio: min(100vw, 265px);
+}
+
+.estrela-9 {
+  --angulo: 220deg;
+
+  --duracao: 5.5s;
+
+  --atraso: 1.3s;
+
+  --raio: min(100vw, 290px);
+}
+
+/* Animação que gira o anel suavemente */
+
+body.dia-chegou.orbita-pronta .estrela-cadente {
+  animation: girar-estrela var(--duracao) linear var(--atraso) infinite;
+}
+
+@keyframes girar-estrela {
+  0% {
+    transform: rotate(var(--angulo));
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(calc(var(--angulo) + 360deg));
+
+    opacity: 0;
+  }
+}
+
+/* =========================================
+
+ MENSAGEM DE ANIVERSÁRIO
+
+ ========================================= */
+
+.mensagem-aniversario {
+  position: absolute;
+
+  left: 50%;
+
+  top: 42%;
+
+  transform: translate(-50%, -50%);
+
+  width: 80%;
+
+  z-index: 8;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  text-align: center;
+
+  font-size: 1em;
+
+  line-height: 1.3;
+
+  color: #f4dfa4;
+
+  opacity: 0;
+
+  visibility: hidden;
+}
+
+/* O nome recebe um pouco mais de destaque */
+
+.nome-aniversario {
+  font-size: 2em;
+
+  color: #dbaf50;
+}
+
+.data-aniv {
+  font-size: 0.8em;
+
+  color: #f4dfa4;
+}
+
+/* A mensagem só aparece depois da entrada das estrelas */
+
+body.dia-chegou.mensagem-visivel .mensagem-aniversario {
+  animation: revelar-mensagem 1.8s ease-out forwards;
+}
+
+@keyframes revelar-mensagem {
+  0% {
+    opacity: 0;
+
+    visibility: visible;
+
+    transform: translate(-50%, -44%);
+  }
+
+  100% {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* =========================================================
+
+ REINVENTANDO A MENSAGEM COM O ARCO PORTAL
+
+ ========================================================= */
+
+.mensagem-aniversario {
+  position: absolute;
+
+  left: 45%;
+
+  top: 15%;
+
+  transform: translate(-50%, -50%);
+
+  width: 320px;
+
+  height: 420px;
+
+  z-index: 8;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  text-align: center;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+/* Quando chega a hora, revela todo o conjunto do portal */
+
+body.dia-chegou.mensagem-visivel .mensagem-aniversario {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transition: opacity 1s ease;
+}
+
+/* O Arco SVG */
+
+.portal-svg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.portal-svg .linha-portal {
+  stroke-dasharray: 1000;
+
+  stroke-dashoffset: 1000;
+
+  transition: stroke-dashoffset 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portal-svg .lua-portal {
+  opacity: 0;
+
+  transition: opacity 1s ease 1.5s;
+}
+
+body.dia-chegou.mensagem-visivel .portal-svg .linha-portal {
+  stroke-dashoffset: 0;
+}
+
+body.dia-chegou.mensagem-visivel .portal-svg .lua-portal {
+  opacity: 1;
+}
+
+/* O Texto dentro do portal */
+
+.texto-portal {
+  position: relative;
+
+  left: 27%;
+
+  top: 70%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 15px;
+  color: #f4dfa4;
+  font-size: 1.2em;
+}
+
+.nome-aniversario {
+  font-size: 2em;
+
+  color: #dbaf50;
+
+  letter-spacing: 2px;
+}
+
+.data-aniv {
+  font-size: 0.8em;
+
+  color: #f4dfa4;
+
+  letter-spacing: 3px;
+}
+
+/* =========================================================
+
+ BOTÃO ABRIR E MICRO-INTERAÇÕES
+
+ ========================================================= */
+
+.btn-abrir {
+  position: relative;
+
+  bottom: -100%;
+  left: 7%;
+
+  z-index: 3;
+
+  margin-top: 25px;
+
+  padding: 10px 42px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  letter-spacing: 4px;
+
+  color: #ffe5a0;
+
+  background: rgba(5, 14, 43, 0.7);
+
+  border: 1px solid rgba(219, 175, 80, 0.7);
+
+  border-radius: 25px;
+
+  cursor: pointer;
+
+  outline: none;
+
+  backdrop-filter: blur(4px);
+
+  box-shadow: 0 0 14px rgba(246, 186, 72, 0.25);
+
+  opacity: 0;
+
+  transform: translateY(15px);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body.dia-chegou.mensagem-visivel .btn-abrir {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  transition:
+    opacity 1s ease 1.8s,
+    transform 1s ease 1.8s,
+    background 0.3s,
+    box-shadow 0.3s;
+}
+
+.btn-abrir:hover {
+  background: rgba(246, 186, 72, 0.2);
+
+  border-color: #ffe5a0;
+
+  color: #ffffff;
+
+  box-shadow: 0 0 22px rgba(246, 186, 72, 0.6);
+
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Animação suave ao clicar para ir para a tela-02 */
+
+body.saindo-da-tela #tela-01 {
+  opacity: 0;
+
+  transform: scale(0.95);
+
+  transition: all 0.8s ease-in;
+}
+
+/* =====================================================
+   TRANSIÇÃO: ÓRBITA → PORTAL → BOTÃO
+   ===================================================== */
+
+/* A órbita e as estrelas permanecem até a mensagem terminar. */
+#circulo {
+  transition: opacity 0.9s ease;
+}
+
+.estrelas-cadentes {
+  opacity: 0;
+  transition:
+    opacity 0.9s ease,
+    visibility 0s linear 0.9s;
+}
+
+body.dia-chegou.orbita-pronta .estrelas-cadentes {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Após a mensagem, a órbita e as estrelas desaparecem. */
+body.dia-chegou.transicao-portal #circulo {
+  opacity: 0;
+}
+
+body.dia-chegou.transicao-portal .estrelas-cadentes {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* O portal fica escondido até começar sua etapa. */
+.portal-svg {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.portal-svg .linha-portal {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: none;
+}
+
+.portal-svg .lua-portal {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* O portal aparece e começa a ser desenhado. */
+body.dia-chegou.portal-iniciando .portal-svg {
+  opacity: 1;
+}
+
+body.dia-chegou.portal-iniciando .portal-svg .linha-portal {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dia-chegou.portal-iniciando .portal-svg .lua-portal {
+  opacity: 1;
+  transition-delay: 1.4s;
+}
+
+/* O botão só fica disponível quando o portal termina. */
+.btn-abrir {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+body.dia-chegou.portal-pronto .btn-abrir {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+body.dia-chegou.portal-pronto .btn-abrir:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Evita que regras antigas iniciem o portal cedo demais. */
+body.dia-chegou.mensagem-visivel:not(.portal-iniciando)
+  .portal-svg
+  .linha-portal {
+  stroke-dashoffset: 1000;
+  transition: none;
+}
+
+body.dia-chegou.mensagem-visivel:not(.portal-iniciando)
+  .portal-svg
+  .lua-portal {
+  opacity: 0;
+  transition: none;
+}
+
+/* Evita que regras antigas revelem o botão antes da hora. */
+body.dia-chegou.mensagem-visivel:not(.portal-pronto) .btn-abrir {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
 }

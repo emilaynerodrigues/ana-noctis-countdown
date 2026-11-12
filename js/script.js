@@ -1,22 +1,43 @@
 /* =========================================================
-   ANA NOCTIS — COUNTDOWN
-   ========================================================= */
+    ANA NOCTIS — COUNTDOWN
+    ========================================================= */
 
 /* =========================================================
-   1. CONTADOR & METAMORFOSE
+   0. ORIGEM / NOTIFICAÇÃO
    ========================================================= */
 
-/*
-   Data final:
-   13 de novembro de 2026
-   Horário:
-   00:00:00
-*/
-const dataFinal = new Date(2026, 10, 13, 0, 0, 0);
+const parametros = new URLSearchParams(window.location.search);
+const origem = parametros.get("origem");
+
+if (origem === "segredo") {
+  emailjs
+    .send("service_yd4mgxk", "template_4gzu3ls", {
+      message: `
+        A Ana abriu o contador.
+      `,
+      message: "A Ana abriu o contador.",
+      footer: "O contador foi encontrado.",
+    })
+    .then(() => {
+      console.log("✅ Notificação enviada pelo EmailJS.");
+    })
+    .catch((error) => {
+      console.error("❌ Erro ao enviar pelo EmailJS:", error);
+    });
+}
+
+/* =========================================================
+    1. CONTADOR
+    ========================================================= */
 
 /*
-   Elementos do contador e controle
-*/
+    Data final de teste ou oficial.
+    Para o aniversário oficial, use 13 de novembro de 2026,
+    à meia-noite: new Date(2026, 10, 13, 0, 0, 0)
+  */
+
+const dataFinal = new Date(2026, 10, 11, 23, 10, 30);
+
 const elementoDias = document.getElementById("dias");
 const elementoHoras = document.querySelector(
   ".time:nth-of-type(1) .time-titulo",
@@ -28,34 +49,19 @@ const elementoSegundos = document.querySelector(
   ".time:nth-of-type(3) .time-titulo",
 );
 
-let metamorfoseIniciada = false;
-
-/*
-   Coloca sempre dois dígitos.
-*/
 function doisDigitos(numero) {
   return String(numero).padStart(2, "0");
 }
 
-/*
-   Atualiza o contador e dispara a transição no dia 13.
-*/
 function atualizarContador() {
   const agora = new Date();
   const diferenca = dataFinal - agora;
 
   if (diferenca <= 0) {
-    elementoDias.textContent = "00";
-    elementoHoras.textContent = "00";
-    elementoMinutos.textContent = "00";
-    elementoSegundos.textContent = "00";
-
-    clearInterval(intervaloContador);
-
-    if (!metamorfoseIniciada) {
-      metamorfoseIniciada = true;
-      iniciarMetamorfose();
-    }
+    if (elementoDias) elementoDias.textContent = "00";
+    if (elementoHoras) elementoHoras.textContent = "00";
+    if (elementoMinutos) elementoMinutos.textContent = "00";
+    if (elementoSegundos) elementoSegundos.textContent = "00";
     return;
   }
 
@@ -65,21 +71,19 @@ function atualizarContador() {
   const minutos = Math.floor((totalSegundos % 3600) / 60);
   const segundos = totalSegundos % 60;
 
-  elementoDias.textContent = doisDigitos(dias);
-  elementoHoras.textContent = doisDigitos(horas);
-  elementoMinutos.textContent = doisDigitos(minutos);
-  elementoSegundos.textContent = doisDigitos(segundos);
+  if (elementoDias) elementoDias.textContent = dias;
+  if (elementoHoras) elementoHoras.textContent = doisDigitos(horas);
+  if (elementoMinutos) elementoMinutos.textContent = doisDigitos(minutos);
+  if (elementoSegundos) elementoSegundos.textContent = doisDigitos(segundos);
 }
 
-/*
-   Primeira atualização imediata e intervalo contínuo.
-*/
 atualizarContador();
-const intervaloContador = setInterval(atualizarContador, 1000);
+setInterval(atualizarContador, 1000);
 
 /* =========================================================
-   2. ESTRELAS DO CÉU
-   ========================================================= */
+    2. ESTRELAS DO CÉU
+    ========================================================= */
+
 const estrelasDoCeu = document.querySelectorAll("#ceu #estrelas > *");
 
 estrelasDoCeu.forEach((estrela) => {
@@ -91,8 +95,9 @@ estrelasDoCeu.forEach((estrela) => {
 });
 
 /* =========================================================
-   3. PONTINHOS DOURADOS
-   ========================================================= */
+    3. PONTINHOS DOURADOS
+    ========================================================= */
+
 const pontinhos = document.querySelectorAll("#pontinhos circle");
 
 pontinhos.forEach((pontinho) => {
@@ -104,8 +109,9 @@ pontinhos.forEach((pontinho) => {
 });
 
 /* =========================================================
-   4. ÓRBITA
-   ========================================================= */
+    4. ÓRBITA
+    ========================================================= */
+
 const orbita = document.querySelector("#orbita path");
 
 if (orbita) {
@@ -115,66 +121,109 @@ if (orbita) {
 }
 
 /* =========================================================
-   5. SEQUÊNCIA DA INTRODUÇÃO
-   ========================================================= */
+    5. SEQUÊNCIA DA INTRODUÇÃO
+    ========================================================= */
+
 const corpo = document.body;
 
-/* FASE 1 — CÉU */
 setTimeout(() => {
   corpo.classList.add("fase-ceu");
 }, 100);
 
-/* FASE 2 — PONTINHOS */
 setTimeout(() => {
   corpo.classList.add("fase-pontinhos");
 }, 2800);
 
-/* FASE 3 — ÓRBITA */
 setTimeout(() => {
   corpo.classList.add("fase-orbita");
 }, 4800);
 
-/* FASE 4 — ELEMENTOS DA ÓRBITA */
 setTimeout(() => {
   corpo.classList.add("fase-elementos-orbita");
 }, 8200);
 
-/* FASE 5 — TÍTULO */
 setTimeout(() => {
   corpo.classList.add("fase-titulo");
 }, 8800);
 
-/* FASE 6 — CONTADOR */
 setTimeout(() => {
   corpo.classList.add("fase-conteudo");
 }, 10300);
 
 /* =========================================================
-   6. SEQUÊNCIA DA METAMORFOSE (DIA 13)
-   ========================================================= */
-function iniciarMetamorfose() {
-  const flash = document.getElementById("flash-luz");
+    6. METAMORFOSE DO ANIVERSÁRIO
 
-  // 1. Esconde o contador antigo e acelera a rotação das órbitas
-  corpo.classList.add("fase-metamorfose");
+    Sequência:
+    clarão → órbita → estrelas cadentes → mensagem
+    → transição → portal → botão
+    ========================================================= */
 
-  // 2. Após 1.5s, aciona a explosão de luz (flash)
-  setTimeout(() => {
+let aniversarioAtivado = false;
+
+function verificarDiaEspecial() {
+  const agora = new Date();
+
+  if (agora >= dataFinal && !aniversarioAtivado) {
+    aniversarioAtivado = true;
+
+    const flash = document.getElementById("flash-luz");
+
+    // 1. Inicia a cena especial e esconde o contador.
+    document.body.classList.add("dia-chegou");
+
+    // 2. Dispara o clarão.
     if (flash) {
       flash.classList.add("animar-flash");
     }
 
-    // 3. No pico do clarão (1s depois), ativa o portal e revela a tela final
+    // 3. Aguarda o clarão e o início do desenho da órbita.
+    // A órbita leva cerca de 2,5 s para ser desenhada.
     setTimeout(() => {
-      corpo.classList.remove("fase-metamorfose");
-      corpo.classList.add("fase-portal");
-    }, 1000);
-  }, 1500);
+      document.body.classList.add("orbita-pronta");
+
+      // 4. Deixa as estrelas cadentes orbitarem antes da mensagem.
+      setTimeout(() => {
+        document.body.classList.add("mensagem-visivel");
+
+        // 5. Espera a animação de entrada da mensagem terminar.
+        // A animação CSS revelar-mensagem dura 1,8 s.
+        setTimeout(() => {
+          // A órbita e as estrelas somem suavemente.
+          document.body.classList.add("transicao-portal");
+
+          // 6. Aguarda a transição de saída de 0,9 s.
+          setTimeout(() => {
+            // O portal começa a aparecer e a ser desenhado.
+            document.body.classList.add("portal-iniciando");
+
+            // 7. Aguarda o desenho do portal antes de liberar o botão.
+            setTimeout(() => {
+              document.body.classList.add("portal-pronto");
+            }, 2400);
+          }, 1000);
+        }, 1800);
+      }, 4500);
+    }, 2600);
+  }
 }
 
-/*
-   Ação do botão "ABRIR" da tela final.
-*/
+verificarDiaEspecial();
+setInterval(verificarDiaEspecial, 1000);
+
+/* =========================================================
+    7. BOTÃO "ABRIR"
+    ========================================================= */
+
 function abrirSurpresa() {
-  window.location.href = "tela-02.html";
+  const btn = document.getElementById("btn-abrir");
+
+  if (btn) {
+    btn.style.pointerEvents = "none";
+  }
+
+  document.body.classList.add("saindo-da-tela");
+
+  setTimeout(() => {
+    window.location.href = "hb.html";
+  }, 800);
 }

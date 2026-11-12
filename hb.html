@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ana Noctis</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css?v=5.0" />
+    <link rel="stylesheet" href="css/hb.css?v=3.0" />
+  </head>
+
+  <body>
+    <main class="app-tela02">
+      <!-- 1. CARTA DE ANIVERSÁRIO -->
+      <section id="cartinha-container" class="cartinha-container revelar">
+        <div class="cartinha-card">
+          <div class="detalhe-top-estrela">✦</div>
+          <h2 class="cartinha-titulo typer">Para a Ana,</h2>
+
+          <div class="cartinha-corpo">
+            <p class="typer">Todo o carinho ainda existe em mim.</p>
+            <p class="typer">
+              Por favor, seja o mais feliz que você consiga ser. Cuide da sua
+              saúde. E, por favor, ame todas as suas versões (exceto a de
+              ignorância máxima).
+            </p>
+            <p class="typer">
+              Não esquecerei das memórias que criamos. Sempre estarei torcendo
+              pela sua felicidade e você sempre terá uma parte de mim.
+            </p>
+
+            <p class="assina typer">Feliz aniversário! ✨</p>
+          </div>
+
+          <div class="cartinha-rodape typer">13 . 11 . 2026</div>
+
+          <button
+            id="btn-soprar"
+            class="btn-soprar"
+            onclick="acionarSoprarVelas()"
+          >
+            SOPRAR AS VELAS
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. CANVAS DO BOLO -->
+      <div id="container-bolo" class="container-bolo oculto">
+        <canvas id="bolo-canvas"></canvas>
+      </div>
+
+      <!-- 3. ESTRELA FINAL CELESTIAL -->
+      <div id="estrela-final" class="estrela-final">
+        <svg
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M50 0 C50 32 68 50 100 50 C68 50 50 68 50 100 C50 68 32 50 0 50 C32 50 50 32 50 0 Z"
+            fill="#FFE5A0"
+          />
+        </svg>
+      </div>
+    </main>
+
+    <script src="js/hb.js?v=3.0"></script>
+  </body>
+</html>

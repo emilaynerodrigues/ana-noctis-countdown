@@ -6,12 +6,14 @@
 
     <title>Ana Noctis - Countdown</title>
 
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css?v=3.5" />
   </head>
 
   <body>
+    <!-- CLARÃO DE LUZ (FLASH) DA METAMORFOSE -->
+    <div id="flash-luz" class="flash-luz"></div>
+
     <main class="app">
       <!--PRIMEIRA TELA-->
       <section id="tela-01" class="tela">
@@ -556,7 +558,7 @@
                   in="coloredNoise2"
                   result="noise2Clipped"
                 />
-                <feFlood flood-color="#FFFFFF" result="color1Flood" />
+                <feFlood id="cor" flood-color="#FFFFFF" result="color1Flood" />
                 <feComposite
                   operator="in"
                   in2="noise1Clipped"
@@ -578,7 +580,71 @@
               </filter>
             </defs>
           </svg>
+
+          <!-- ESTRELAS CADENTES DA ÓRBITA ORIGINAL -->
+          <div class="estrelas-cadentes" id="estrelas-cadentes">
+            <div class="estrela-cadente estrela-1"></div>
+            <div class="estrela-cadente estrela-2"></div>
+            <div class="estrela-cadente estrela-3"></div>
+            <div class="estrela-cadente estrela-4"></div>
+            <div class="estrela-cadente estrela-5"></div>
+            <div class="estrela-cadente estrela-6"></div>
+            <div class="estrela-cadente estrela-7"></div>
+            <div class="estrela-cadente estrela-8"></div>
+            <div class="estrela-cadente estrela-9"></div>
+          </div>
+
+          <!-- MENSAGEM DE ANIVERSÁRIO COM ARCO PORTAL E BOTÃO -->
+          <div class="mensagem-aniversario" id="mensagem-aniversario">
+            <!-- SVG DO ARCO PORTAL -->
+            <svg
+              class="portal-svg"
+              viewBox="0 0 320 420"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="linha-portal"
+                d="M 45 390 V 160 A 115 115 0 0 1 275 160 V 390"
+                stroke="#DBAF50"
+                stroke-width="1.5"
+              />
+              <path
+                class="linha-portal"
+                d="M 55 390 V 165 A 105 105 0 0 1 265 165 V 390"
+                stroke="#DBAF50"
+                stroke-width="0.8"
+              />
+              <path
+                class="linha-portal"
+                d="M 38 390 H 62 M 38 160 H 62 M 258 390 H 282 M 258 160 H 282"
+                stroke="#DBAF50"
+                stroke-width="1.2"
+              />
+              <path
+                class="lua-portal"
+                d="M 160 36 A 10 10 0 1 0 169 47 A 8 8 0 1 1 160 36 Z"
+                fill="#FFE5A0"
+                stroke="#DBAF50"
+                stroke-width="0.5"
+                transform="translate(-75, 50) scale(1.5)"
+              />
+            </svg>
+
+            <!-- TEXTO INTERNO -->
+            <div class="texto-portal">
+              <span>Feliz aniversário,</span>
+              <span class="nome-aniversario">ANA</span>
+              <span class="data-aniv">13 . 11 . 2026</span>
+            </div>
+
+            <!-- BOTÃO ABRIR -->
+            <button id="btn-abrir" class="btn-abrir" onclick="abrirSurpresa()">
+              ABRIR
+            </button>
+          </div>
         </div>
+
         <!--CONTEUDO DA TELA-->
         <div class="conteudo">
           <!-- Título -->
@@ -620,22 +686,29 @@
 
       <!--SEGUNDA TELA-->
       <section id="tela-02" class="tela">
-        <!--SVG DO PRIMEIRO CENÁRIO-->
         <div class="visual"></div>
-        <!--CONTEUDO DA TELA-->
         <div class="conteudo"></div>
       </section>
 
       <!--TERCEIRA TELA-->
       <section id="tela-03" class="tela">
-        <!--SVG DO PRIMEIRO CENÁRIO-->
         <div class="visual"></div>
-        <!--CONTEUDO DA TELA-->
         <div class="conteudo"></div>
       </section>
     </main>
 
     <!--JAVASCRIPT-->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+
+    <script>
+      emailjs.init({
+        publicKey: "U6D8LsiQBn2L3RqW7",
+      });
+    </script>
+
     <script src="js/script.js?v=3.5"></script>
   </body>
 </html>
