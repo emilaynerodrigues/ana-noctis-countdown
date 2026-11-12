@@ -71,7 +71,7 @@ function atualizarContador() {
   const minutos = Math.floor((totalSegundos % 3600) / 60);
   const segundos = totalSegundos % 60;
 
-  if (elementoDias) elementoDias.textContent = dias;
+  if (elementoDias) elementoDias.textContent = doisDigitos(dias);
   if (elementoHoras) elementoHoras.textContent = doisDigitos(horas);
   if (elementoMinutos) elementoMinutos.textContent = doisDigitos(minutos);
   if (elementoSegundos) elementoSegundos.textContent = doisDigitos(segundos);
